@@ -1,0 +1,5 @@
+[https]
+proxy = "proxy.pri.ibanyu.com:8118"
+
+[http]
+proxy = "proxy.pri.ibanyu.com:8118"
