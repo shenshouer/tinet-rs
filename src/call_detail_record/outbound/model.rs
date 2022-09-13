@@ -45,24 +45,24 @@ pub struct RespCallDtailRecordOoutboundQuery {
     pub cno: String,
     #[serde(rename = "agentNumber")]
     pub agent_number: String,
-    #[serde(rename = "startTime", deserialize_with = "str_to_u64")]
-    pub start_time: u64,
-    #[serde(rename = "endTime", deserialize_with = "str_to_u64")]
-    pub end_time: u64,
-    #[serde(rename = "calleeRingingTime", deserialize_with = "str_to_u64")]
-    pub callee_ringing_time: u64,
-    #[serde(rename = "bridgeTime", deserialize_with = "str_to_u64")]
-    pub bridge_time: u64,
-    #[serde(rename = "waitDuration", deserialize_with = "str_to_u64")]
-    pub wait_duration: u64,
-    #[serde(rename = "vadIn", deserialize_with = "str_to_u64")]
-    pub vad_in: u64,
-    #[serde(rename = "vadOut", deserialize_with = "str_to_u64")]
-    pub vad_out: u64,
-    #[serde(rename = "bridgeDuration", deserialize_with = "str_to_u64")]
-    pub bridge_duration: u64,
-    #[serde(rename = "totalDuration", deserialize_with = "str_to_u64")]
-    pub total_duration: u64,
+    #[serde(rename = "startTime", deserialize_with = "str_to_i64")]
+    pub start_time: i64,
+    #[serde(rename = "endTime", deserialize_with = "str_to_i64")]
+    pub end_time: i64,
+    #[serde(rename = "calleeRingingTime", deserialize_with = "str_to_i64")]
+    pub callee_ringing_time: i64,
+    #[serde(rename = "bridgeTime", deserialize_with = "str_to_i64")]
+    pub bridge_time: i64,
+    #[serde(rename = "waitDuration", deserialize_with = "str_to_i64")]
+    pub wait_duration: i64,
+    #[serde(rename = "vadIn", deserialize_with = "str_to_i64")]
+    pub vad_in: i64,
+    #[serde(rename = "vadOut", deserialize_with = "str_to_i64")]
+    pub vad_out: i64,
+    #[serde(rename = "bridgeDuration", deserialize_with = "str_to_i64")]
+    pub bridge_duration: i64,
+    #[serde(rename = "totalDuration", deserialize_with = "str_to_i64")]
+    pub total_duration: i64,
     #[serde(rename = "sipCause")]
     pub sip_cause: String,
     #[serde(rename = "userField")]
