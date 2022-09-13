@@ -72,10 +72,10 @@ pub struct RespCallDtailRecordOoutboundQuery {
     pub agent_clid: String,
     #[serde(rename = "xNumber")]
     pub x_number: String,
-    #[serde(rename = "answerTime", deserialize_with = "str_to_u64")]
-    pub answer_time: u64,
-    #[serde(rename = "mainRingingTime", deserialize_with = "str_to_u64")]
-    pub main_ringing_time: u64,
+    #[serde(rename = "answerTime", deserialize_with = "str_to_i64")]
+    pub answer_time: i64,
+    #[serde(rename = "mainRingingTime", deserialize_with = "str_to_i64")]
+    pub main_ringing_time: i64,
     #[serde(rename = "hangupReason")]
     pub hangup_reason: String,
     #[serde(rename = "taskId")]
