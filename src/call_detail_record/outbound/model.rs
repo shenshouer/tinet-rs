@@ -94,12 +94,15 @@ pub struct RecordFile {
 
 #[derive(Debug, Deserialize, Serialize, Default)]
 pub struct UserField {
+    #[serde(default)]
     pub uid: String,
+    #[serde(default)]
     pub phone: String,
-    #[serde(rename = "rmsTag")]
+    #[serde(rename = "rmsTag", default)]
     pub rms_tag: String,
     #[serde(rename = "sourcechannel")]
     pub source_channel: Option<String>,
+    #[serde(default)]
     pub cdr_x1_number: String,
 }
 
@@ -128,4 +131,53 @@ where
 {
     let s: &str = Deserialize::deserialize(deserializer)?;
     Ok(s.parse().map_err(D::Error::custom)?)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn deserial_from_str() {
+        let json_str = r#"{
+            "id": "6073544461",
+            "callType": "预览外呼",
+            "status": "座席未接听",
+            "statusCode": "30",
+            "gno": "",
+            "endReason": "1000",
+            "recordFile": [],
+            "uniqueId": "sip-31-1661062084.60936",
+            "requestUniqueId": "478aad828fb8a0659e9f462828698b77",
+            "customerNumber": "13993122992",
+            "customerProvince": "甘肃",
+            "customerCity": "兰州",
+            "agentName": "代立蒙",
+            "cno": "18402",
+            "agentNumber": "5892",
+            "startTime": "1661062084",
+            "endTime": "1661062116",
+            "calleeRingingTime": "0",
+            "bridgeTime": "0",
+            "waitDuration": "0",
+            "vadIn": "0",
+            "vadOut": "0",
+            "bridgeDuration": "0",
+            "totalDuration": "0",
+            "sipCause": "0",
+            "userField": {},
+            "clid": "01027251457",
+            "agentClid": "01086487202",
+            "xNumber": "",
+            "answerTime": "0",
+            "mainRingingTime": "0",
+            "hangupReason": "0",
+            "taskId": "0"
+        }"#;
+
+        match serde_json::from_str::<RespCallDtailRecordOoutboundQuery>(json_str) {
+            Err(e) => println!("Error: {e:?}"),
+            Ok(data) => println!("Ok: {data:?}"),
+        }
+    }
 }
