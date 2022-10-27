@@ -8,7 +8,8 @@ pub struct Response<T> {
     #[serde(
         rename = "totalCount",
         deserialize_with = "str_to_opt_u64",
-        skip_serializing_if = "Option::is_none"
+        skip_serializing_if = "Option::is_none",
+        default
     )]
     pub total_count: Option<u64>,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -166,6 +167,52 @@ mod tests {
             "totalDuration": "0",
             "sipCause": "0",
             "userField": {},
+            "clid": "01027251457",
+            "agentClid": "01086487202",
+            "xNumber": "",
+            "answerTime": "0",
+            "mainRingingTime": "0",
+            "hangupReason": "0",
+            "taskId": "0"
+        }"#;
+
+        match serde_json::from_str::<RespCallDtailRecordOoutboundQuery>(json_str) {
+            Err(e) => println!("Error: {e:?}"),
+            Ok(data) => println!("Ok: {data:?}"),
+        }
+    }
+
+    #[test]
+    fn deserial_from_str2() {
+        let json_str = r#"{
+            "id": "6073544461",
+            "callType": "预览外呼",
+            "status": "座席未接听",
+            "statusCode": "30",
+            "gno": "",
+            "endReason": "1000",
+            "recordFile": [],
+            "uniqueId": "sip-31-1661062084.60936",
+            "requestUniqueId": "478aad828fb8a0659e9f462828698b77",
+            "customerNumber": "13993122992",
+            "customerProvince": "甘肃",
+            "customerCity": "兰州",
+            "agentName": "代立蒙",
+            "cno": "18402",
+            "agentNumber": "5892",
+            "startTime": "1661062084",
+            "endTime": "1661062116",
+            "calleeRingingTime": "0",
+            "bridgeTime": "0",
+            "waitDuration": "0",
+            "vadIn": "0",
+            "vadOut": "0",
+            "bridgeDuration": "0",
+            "totalDuration": "0",
+            "sipCause": "0",
+            "userField": {
+                "uid": "111"
+            },
             "clid": "01027251457",
             "agentClid": "01086487202",
             "xNumber": "",
